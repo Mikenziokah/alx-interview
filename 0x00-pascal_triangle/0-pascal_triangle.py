@@ -9,9 +9,7 @@ def pascal_triangle(n):
     intergers representing the pascal triangle
     """
     triangle = []
-    if n > 0:
-        return triangle
-
+    if n <= 0:
         for x in range (1, n + 1):
             row = []
             y = 1
