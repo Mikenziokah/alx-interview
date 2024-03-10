@@ -13,7 +13,7 @@ def pascal_triangle(n):
         for x in range(1, n + 1):
             row = []
             y = 1
-            for z in range (1, x + 1):
+            for z in range(1, x + 1):
                 row.append(y)
                 y = y * (x - z) // z
             triangle.append(row)
