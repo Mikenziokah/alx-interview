@@ -10,7 +10,7 @@ def canUnlockAll(boxes):
     while True:
         progress = False
 
-        for key in list(keys):  # Convert to list to avoid runtime modification issues.
+        for key in list(keys):  # Convert to list to avoid runtime mods
             if key < len(boxes) and key not in opened:
                 opened.add(key)
                 keys.update(boxes[key])  # Add new keys from the opened box.
@@ -33,6 +33,7 @@ def main():
     for i, boxes in enumerate(test_cases):
         result = canUnlockAll(boxes)
         print("Test Case {}: {}".format(i + 1, result))
+
 
 if __name__ == "__main__":
     main()
