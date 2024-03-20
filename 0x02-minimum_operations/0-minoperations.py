@@ -20,7 +20,7 @@ def minOperations(n):
             n = n / root
             # decrement root to find remaining smaller vals to evenly devide n
             root -= 1
-            # increment root untill it evenly devides by n
-            root += 1
-            # return operations(x)
-            return x
+        # increment root untill it evenly devides by n
+        root += 1
+    return x
+
