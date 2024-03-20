@@ -23,4 +23,3 @@ def minOperations(n):
         # increment root untill it evenly devides by n
         root += 1
     return x
-
