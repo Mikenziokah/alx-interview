@@ -13,7 +13,7 @@ def minOperations(n):
     x, root = 0, 2
     while root <= n:
         # if n evenly devides by root
-        if n % 2 == 0:
+        if n % root == 0:
             # total evens divisible by root = total operations(x)
             x += root
             # give n to the reminder
