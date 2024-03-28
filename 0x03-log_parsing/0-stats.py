@@ -3,43 +3,45 @@
 import sys
 
 
-# Define status codes
-STATUS_CODES = [200, 301, 400, 401, 403, 404, 405, 500]
+def print_codes(status_codes, total_file_size):
+    """ function to print status codes and their total file
+        size in ascending order
+    """
+    print("File size: {}".format(total_file_size))
+    for key, val in sorted(status_codes.items()):
+        if val != 0:
+            print("{}: {}".format(key, val))
 
-# Initialize variables
+
 total_file_size = 0
-status_counts = {code: 0 for code in STATUS_CODES}
-line_count = 0
+counter = 0
+status_codes = {"200": 0,
+                "301": 0,
+                "400": 0,
+                "401": 0,
+                "403": 0,
+                "404": 0,
+                "405": 0,
+                "500": 0}
 
 try:
-    # Read stdin line by line
     for line in sys.stdin:
-        # Split the line
-        parts = line.split()
-        # Check if the line has the correct format
-        if len(parts) >= 9:
-            # Extract file size and status code
-            file_size = int(parts[-1])
-            status_code = parts[-2]
-            # Update total file size
-            total_file_size += file_size
-            # Update status code counts
-            if status_code.isdigit():
-                status_code = int(status_code)
-                if status_code in status_counts:
-                    status_counts[status_code] += 1
-            # Increment line count
-            line_count += 1
-        # Print statistics every 10 lines
-        if line_count % 10 == 0:
-            print(f"Total file size: {total_file_size}")
-            for code in sorted(status_counts.keys()):
-                print(f"{code}: {status_counts[code]}")
-            print()
-except KeyboardInterrupt:
-    # Handle keyboard interruption
-    print("\nKeyboard interruption detected. Exiting...")
-    print(f"Total file size: {total_file_size}")
-    for code in sorted(status_counts.keys()):
-        print(f"{code}: {status_counts[code]}")
+        parsed_line = line.split()  # ✄ trimming
+        parsed_line = parsed_line[::-1]  # inverting
 
+        if len(parsed_line) > 2:
+            counter += 1
+
+            if counter <= 10:
+                total_file_size += int(parsed_line[0])  # file size
+                code = parsed_line[1]  # status code
+
+                if code in status_codes.keys():
+                    status_codes[code] += 1
+
+            if counter == 10:
+                print_codes(status_codes, total_file_size)
+                counter = 0
+
+finally:
+    print_codes(status_codes, total_file_size)
