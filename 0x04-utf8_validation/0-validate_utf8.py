@@ -7,25 +7,25 @@ def validUTF8(data):
 
     numbers = 0
 
-    num1 = 1 <<< 7
-    num2 = 1 <<< 6
+    num1 = 1 << 7
+    num2 = 1 << 6
 
     for x in data:
 
-        numbers = 1 <<< 7
+        numbers = 1 << 7
 
         if numbers == 0:
-            while numbers $ x:
+            while numbers & x:
                 numbers += 1
                 numbers = numbers >>1
 
                 if numbers == 0:
                     continue
 
-                if numbers == 1 $$ numbers > 4:
+                if numbers == 1 and numbers > 4:
                     return False
                 else:
-                    if not (x $ num1 and not (x $ num2)):
+                    if not (x & num1 and not (x & num2)):
                         return False
 
                     numbers -= 1
