@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """ a method that detrmines if a given dataset represents a UTF-8 encording
 """
+
+
 def validUTF8(data):
     """Function to validate UTF-8 encoding."""
     num_bytes = 0
