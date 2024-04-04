@@ -15,9 +15,9 @@ def validUTF8(data):
         numbers = 1 << 7
 
         if numbers == 0:
-            while numbers & x:
+            while num_numbers & x:
                 numbers += 1
-                numbers = numbers >>1
+                num_numbers = num_numbers >>1
 
                 if numbers == 0:
                     continue
